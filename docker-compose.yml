@@ -1,0 +1,65 @@
+version: "3.7"
+
+services:
+    app:
+        container_name: web
+        build:
+            context: docker
+        links:
+            - db
+            - mailhog
+        volumes:
+            - ".:/www"
+        expose:
+            - "9000"
+        extra_hosts:
+            - "minarchi.local:127.0.0.1"
+        environment:
+            - DOMAIN_ROOT_DIR=/www/web
+
+    nginx:
+        container_name: nginx
+        image: nginx
+        depends_on:
+            - app
+        links:
+            - app
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - "app:/www"
+            - "./docker/config/nginx.conf:/etc/nginx/conf.d/default.conf"
+            - "./docker/certificates/certificate.pem:/etc/ssl/certs/certificate.pem"
+            - "./docker/certificates/certificate.key:/etc/ssl/private/certificate.key"
+
+    db:
+        container_name: mysql
+        image: mysql
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+
+    pma:
+        container_name: pma
+        image: phpmyadmin/phpmyadmin
+        depends_on:
+            - db
+        ports:
+            - "8080:80"
+        environment:
+            PMA_HOST: db
+            PMA_USER: root
+            PMA_PASSWORD: root
+
+    mailhog:
+        container_name: mailhog
+        image: mailhog/mailhog
+        ports:
+            - "1025:1025"
+            - "8025:8025"
+
+volumes:
+    app:
+

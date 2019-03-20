@@ -1,0 +1,16 @@
+{
+    "authors": [
+        {
+            "name": "Guillaume Harel",
+            "email": "g.harel@outlook.fr",
+            "homepage": "http://gharel.me",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "require" : {
+        "php" : ">7.0",
+        "ext-mysqli": "*",
+        "ext-xml": "*"
+    }
+}
