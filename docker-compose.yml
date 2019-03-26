@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
     app:
-        container_name: web
+        container_name: app
         build:
             context: docker
         links:
@@ -13,7 +13,7 @@ services:
         expose:
             - "9000"
         extra_hosts:
-            - "minarchi.local:127.0.0.1"
+            - "host.local:127.0.0.1"
         environment:
             - DOMAIN_ROOT_DIR=/www/web
 
@@ -62,4 +62,3 @@ services:
 
 volumes:
     app:
-

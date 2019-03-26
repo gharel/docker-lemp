@@ -34,10 +34,10 @@ RUN mkdir /www \
  && echo "alias ll='ls -l'" > /etc/profile.d/ll.sh
 
 # Set configurations
-COPY config/php.ini /usr/local/etc/php/conf.d/php.ini
-COPY config/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
-COPY config/timezone /etc/timezone
-COPY config/hosts /etc/hosts
+COPY config/php.ini       /usr/local/etc/php/conf.d/php.ini
+COPY config/php-fpm.conf  /usr/local/etc/php-fpm.d/www.conf
+COPY config/timezone      /etc/timezone
+COPY config/hosts         /etc/hosts
 
 WORKDIR /www/web
 
