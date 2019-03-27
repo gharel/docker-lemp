@@ -29,7 +29,11 @@ RUN docker-php-ext-install \
 RUN docker-php-ext-enable \
     opcache
 RUN mkdir /www \
+ && mkdir /logs \
+ && touch /logs/error-nginx.log \
+ && touch /logs/access-nginx.log \
  && chown -R www-data:www-data /www/ \
+ && chown -R www-data:www-data /logs/ \
  && cp /usr/share/zoneinfo/Pacific/Noumea /etc/localtime \
  && echo "alias ll='ls -l'" > /etc/profile.d/ll.sh
 
