@@ -1,5 +1,5 @@
-# Basic NMP
-Work in progress - Basic server web with docker
+# LEMP
+Work in progress - Basic webserver with docker
 
 ##Todo  
 ☐ Fix error log on Nginx after moving them  
