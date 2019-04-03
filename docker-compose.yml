@@ -12,7 +12,7 @@ services:
         expose:
             - "9000"
         extra_hosts:
-            - "host.local:127.0.0.1"
+            - "local.intranet.opt:127.0.0.1"
         environment:
             - DOMAIN_ROOT_DIR=/www/web
 
